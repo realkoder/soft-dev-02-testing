@@ -1,0 +1,1 @@
+class CalculationError < StandardError; end
