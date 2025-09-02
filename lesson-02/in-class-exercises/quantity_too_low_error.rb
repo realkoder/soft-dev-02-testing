@@ -1,0 +1,1 @@
+class QuantityTooLowError < StandardError; end

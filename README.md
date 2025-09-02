@@ -9,11 +9,11 @@
 **Quality Control (QC). Reactive**
 
 - Making sure that the desired level of quality is achieved
-  - _Testing_ - Enforcement of quality control by finding defects in a product
+    - _Testing_ - Enforcement of quality control by finding defects in a product
 
 ---
 
-### Verfication vs Validation
+# Verification vs Validation
 
 **Verification** - Checks that the work product meets the requirements
 
@@ -30,16 +30,18 @@
 
 <br>
 
-## Testing strategies
+# Testing strategies
 
-### Positive vs Negative Tests
+For _unit tests_ all values have to be hardcoded.
+
+## Positive vs Negative Tests
 
 - **Positive Tests:** Verify expected behavior with valid inputs (happy path).
 - **Negative Tests:** Verify error handling and graceful degradation with invalid or unexpected inputs.
 
 ---
 
-### Static Testing
+## Static Testing
 
 Testing the code without it being executed.
 Could be the IDE highlighting errors - looking at the code / reviewing the code / AI analyzing code.
@@ -48,7 +50,68 @@ Could be the IDE highlighting errors - looking at the code / reviewing the code 
 
 <br>
 
-## Certifications
+## Black Box vs White Box Testing
+
+- **Black Box** (specification-based) - Based on the test basis
+
+- **White Box** (structure-based) - Focused on the code or other structural elements
+    - Experience-based
+
+### Black Box Testing
+
+**Based on specifications**
+
+- _Requirements_
+- _Architecture_
+- _Technical_
+- _Testing scope: what to do (specifications), not how to do it (internal design)_
+- _They can be applied to all test levels_
+    - Unit tests
+    - Integration tests
+    - System tests
+    - Acceptance tests
+
+#### Black-box Techniques
+
+1. **Equivalence Partitioning**
+    - Similar inputs can be grouped together(_positive integers_, _alphabetic characters_)
+    - Any partition value can be used for testing (often a middle value)
+    - Numbers: zero is a special case that may constitute a partition of its own
+    - Input partitions
+        - Based on input values
+
+---
+
+2. **Boundary Value Analysis**
+    - Partitions have boundaries
+    - Errors tend to cluster around boundaries
+    - _Three point boundary value problem_ - _Three-point boundary value test_: lower bound, upper bound, and exact boundary value
+    - Terms such as Lower boundary & Upper Boundary
+    - Mostly based on:
+        - _>vs >=_
+        - _> <vs <=_
+        - _> Loops. E.g.:_
+            - for (i = 0; i < total; i++)
+            - for (i = 1; i < total; i++)for (i = 0; i <= total; i++)
+            - for (i = 1; i <= total; i++)
+        - It works well in combination with equivalence partitioning
+
+---
+
+3. **Decision Table Testing**
+    - Specifications often contain business rules to define the functions and conditions
+    - Assessing the combination of these business rules can become complex
+    - Assessment must be comprehensive
+
+---
+
+4. **State Transition Testing**
+
+---
+
+<br>
+
+# Certifications
 
 `International Software Testing Qualifications Board`
 
@@ -68,7 +131,7 @@ practices, and terminology, which can enhance a professional's career profile an
 
 <br>
 
-## Assets
+# Assets
 
 **V-model**
 ![V-model](/assets/v-model.png)
@@ -77,7 +140,9 @@ practices, and terminology, which can enhance a professional's career profile an
 
 <br>
 
-## LINKS
+# LINKS
+
+[Difference between 'subject' and 'let'](https://stackoverflow.com/questions/38437162/whats-the-difference-between-rspecs-subject-and-let-when-should-they-be-used)
 
 [Khorikov's site author of 'Unit Testing:Principles, Practices and Patterns'](https://khorikov.org/)
 
