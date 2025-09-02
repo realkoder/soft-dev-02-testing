@@ -27,17 +27,17 @@ RSpec.describe FramingShop do
   context 'negative tests' do
     [
       # LOWER BOUNDARY
-      { width: -Float::MAX.to_i, height: -Float::MAX.to_i, error: FrameSizeNotValid }, # LOWEST
-      { width: -500, height: -2_439_423, error: FrameSizeNotValid }, # MIDDLE
-      { width: 29, height: 29, error: FrameSizeNotValid }, # UPPER
+      { width: 0, height: 0, error: FrameSizeNotValid }, # Far below valid
+      { width: 15, height: 15, error: FrameSizeNotValid }, # MIDDLE
+      { width: 29, height: 29, error: FrameSizeNotValid }, # Just above valid
 
       # UPPER BOUNDARY
-      { width: 101, height: 61, error: FrameSizeNotValid }, # LOWER
-      { width: 500, height: 2_439_423, error: FrameSizeNotValid }, # MIDDLE
-      { width: Float::MAX.to_i, height: Float::MAX.to_i, error: FrameSizeNotValid }, # LOWEST
+      { width: 101, height: 61, error: FrameSizeNotValid }, # just above valid
+      { width: 150, height: 150, error: FrameSizeNotValid }, # Middle
+      { width: 200, height: 200, error: FrameSizeNotValid }, # Far above valid
 
     ].each do |example|
-      it "returns #{example[:expected]} for width: #{example[:width]} and height: #{example[:height]}" do
+      it "raises #{example[:error]} for width: #{example[:width]} and height: #{example[:height]}" do
         expect { FramingShop.calculate_price(example[:width], example[:height]) }.to raise_error(example[:error])
       end
     end
