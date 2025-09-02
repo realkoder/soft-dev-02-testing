@@ -1,0 +1,1 @@
+class FrameSizeNotValid < StandardError; end

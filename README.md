@@ -96,6 +96,8 @@ Could be the IDE highlighting errors - looking at the code / reviewing the code 
             - for (i = 1; i <= total; i++)
         - It works well in combination with equivalence partitioning
 
+3-value boundary analysis 
+
 ---
 
 3. **Decision Table Testing**
