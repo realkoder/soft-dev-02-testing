@@ -4,13 +4,9 @@ class DriversLicense
     is_theory_parsed = theory_score >= 85
     is_practical_parsed = practical_errors <= 2
 
-    if is_theory_parsed && is_practical_parsed
-      return build_exam_result(true, false, false, false)
-    end
+    return build_exam_result(true, false, false, false) if is_theory_parsed && is_practical_parsed
 
-    if !is_practical_parsed && !is_theory_parsed
-      return build_exam_result(false, false, false, true)
-    end
+    return build_exam_result(false, false, false, true) if !is_practical_parsed && !is_theory_parsed
 
     build_exam_result(false, !is_theory_parsed, !is_practical_parsed, false)
   end
