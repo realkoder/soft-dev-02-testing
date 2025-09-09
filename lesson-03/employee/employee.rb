@@ -88,16 +88,16 @@ class Employee
 
   # --- Business Logic Methods ---
 
-  def getSalary
+  def get_salary
     @base_salary + (@educational_level * 1220)
   end
 
-  def getDiscount
+  def get_discount
     years = ((Date.today - @date_of_employment).to_i / 365).floor
     years * 0.5
   end
 
-  def getShippingCosts
+  def get_shipping_costs
     case @country.downcase
     when 'denmark', 'norway', 'sweden'
       0

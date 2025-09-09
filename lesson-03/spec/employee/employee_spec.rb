@@ -12,6 +12,36 @@ RSpec.describe Employee do
       end
     end
 
+    context '#get_salary' do
+      it 'adds education multiplier' do
+        emp = Employee.new('1234567891', 'John', 'Doe', 'IT', 30_000, 2, '01/01/1990', '15/03/2015', 'Denmark')
+        expect(emp.get_salary).to eq(30_000 + 2 * 1_220)
+      end
+    end
+
+    context '#getDiscount' do
+      it 'calculates years of employment * 0.5' do
+        emp = Employee.new('1234567891', 'John', 'Doe', 'IT', 30_000, 2, '01/01/1990', '01/01/2020', 'Denmark')
+        years = ((Date.today - Date.new(2020, 1, 1)).to_i / 365).floor
+        expect(emp.get_discount).to eq(years * 0.5)
+      end
+    end
+
+    context '#get_shipping' do
+      [
+        ['1234567891', 'John', 'Doe', 'IT', 40_000, 2, '01/01/1990', '15/03/2015', 'Denmark', 0],
+        ['1234567891', 'John', 'Doe', 'IT', 40_000, 2, '01/01/1990', '15/03/2015', 'Norway', 0],
+        ['1234567891', 'John', 'Doe', 'IT', 40_000, 2, '01/01/1990', '15/03/2015', 'Sweden', 0],
+        ['1234567891', 'John', 'Doe', 'IT', 40_000, 2, '01/01/1990', '15/03/2015', 'Iceland', 50],
+        ['1234567891', 'John', 'Doe', 'IT', 40_000, 2, '01/01/1990', '15/03/2015', 'Finland', 50],
+        ['1234567891', 'John', 'Doe', 'IT', 40_000, 2, '01/01/1990', '15/03/2015', 'Germany', 100],
+      ].each do |cpr, first_name, last_name, department, base_salary, educational_level, dob, doe, country, expected|
+        it "returns #{expected}% for #{country}" do
+          expect(Employee.new(cpr, first_name, last_name, department, base_salary, educational_level, dob, doe, country).get_shipping_costs).to eq(expected)
+        end
+      end
+    end
+
     describe 'validations' do
       context 'CPR' do
         [
@@ -91,9 +121,9 @@ RSpec.describe Employee do
 
       context 'date of employment' do
         [
-          ['1234567891', 'Jean-Luc', 'Doe-Lo', 'IT', 20_000, 2, '01/01/1990', (Date.today).strftime("%d/%m/%Y"), 'Denmark'],
-          ['1234567891', 'Jean-Luc', 'Doe-Lo', 'IT', 20_000, 2, '01/01/1990', (Date.today - 1).strftime("%d/%m/%Y"), 'Denmark'],
-          ['1234567891', 'Jean-Luc', 'Doe-Lo', 'IT', 20_000, 2, '01/01/1990', (Date.today - 1800).strftime("%d/%m/%Y"), 'Denmark'],
+          ['1234567891', 'John', 'Doe', 'IT', 20_000, 2, '01/01/1990', (Date.today).strftime('%d/%m/%Y'), 'Denmark'],
+          ['1234567891', 'John', 'Doe', 'IT', 20_000, 2, '01/01/1990', (Date.today - 1).strftime('%d/%m/%Y'), 'Denmark'],
+          ['1234567891', 'John', 'Doe', 'IT', 20_000, 2, '01/01/1990', (Date.today - 1800).strftime('%d/%m/%Y'), 'Denmark'],
         ].each do |cpr, first_name, last_name, department, base_salary, educational_level, dob, doe, country|
           it "creates employee if date_of_deployment is (got #{doe})" do
             expect(Employee.new(cpr, first_name, last_name, department, base_salary, educational_level, dob, doe, country)).to be_a(Employee)
@@ -103,9 +133,9 @@ RSpec.describe Employee do
 
       context 'country' do
         [
-          ['1234567891', 'Jean-Luc', 'Doe-Lo', 'IT', 20_000, 2, '01/01/1990', (Date.today).strftime("%d/%m/%Y"), 'Denmark'],
-          ['1234567891', 'Jean-Luc', 'Doe-Lo', 'IT', 20_000, 2, '01/01/1990', (Date.today - 1).strftime("%d/%m/%Y"), 'Germany'],
-          ['1234567891', 'Jean-Luc', 'Doe-Lo', 'IT', 20_000, 2, '01/01/1990', (Date.today - 100).strftime("%d/%m/%Y"), 'Italy'],
+          ['1234567891', 'Jean-Luc', 'Doe-Lo', 'IT', 20_000, 2, '01/01/1990', (Date.today).strftime('%d/%m/%Y'), 'Denmark'],
+          ['1234567891', 'Jean-Luc', 'Doe-Lo', 'IT', 20_000, 2, '01/01/1990', (Date.today - 1).strftime('%d/%m/%Y'), 'Germany'],
+          ['1234567891', 'Jean-Luc', 'Doe-Lo', 'IT', 20_000, 2, '01/01/1990', (Date.today - 100).strftime('%d/%m/%Y'), 'Italy'],
         ].each do |cpr, first_name, last_name, department, base_salary, educational_level, dob, doe, country|
           it "creates employee if country is (got #{country})" do
             expect(Employee.new(cpr, first_name, last_name, department, base_salary, educational_level, dob, doe, country)).to be_a(Employee)
