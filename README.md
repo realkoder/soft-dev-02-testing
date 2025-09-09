@@ -66,6 +66,21 @@ _(Check PP - **Unit Testing Best Practices and Anit-Patterns**)_
 
 ![Anti-Patterns unit testing](assets/1-anti-patterns-unit-testing.png)
 
+---
+
+## Detroit Approach
+
+No mocking is allowed
+
+![Detroit approach unit testing](assets/detroit-unit-test-approach.png)
+
+
+## London Approach
+
+Everything is mocked
+
+![London approach unit testing](assets/london-unit-test-approach.png)
+
 
 ---
 
@@ -126,6 +141,31 @@ _(Check PP - **Unit Testing Best Practices and Anit-Patterns**)_
     - Specifications often contain business rules to define the functions and conditions
     - Assessing the combination of these business rules can become complex
     - Assessment must be comprehensive
+
+### Input form Example for Decision Table Design
+
+An input form has two textboxes ("Username" and "Password"). Access to the homepage will be granted only if both fields
+are correct. Represent the situation in a decision table.
+
+#### Solution
+
+|                  | R1 | R2 | R3 | R4 |
+|------------------|----|----|----|----|
+| **Conditions**   |    |    |    |    |
+| Username correct | F  | T  | F  | T  |
+| Password correct | F  | F  | T  | T  |
+| **Actions**      |    |    |    |    |
+| Go to homepage   | N  | N  | N  | Y  |
+
+Reduced solution:
+
+|                  | R1 | R2 | R3 |
+|------------------|----|----|----|
+| **Conditions**   |    |    |    |
+| Username correct | F  | -  | T  |
+| Password correct | -  | F  | T  |
+| **Actions**      |    |    |    |
+| Go to homepage   | N  | N  | Y  |
 
 ---
 
