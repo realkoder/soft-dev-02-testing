@@ -85,7 +85,8 @@ Could be the IDE highlighting errors - looking at the code / reviewing the code 
 2. **Boundary Value Analysis**
     - Partitions have boundaries
     - Errors tend to cluster around boundaries
-    - _Three point boundary value problem_ - _Three-point boundary value test_: lower bound, upper bound, and exact boundary value
+    - _Three point boundary value problem_ - _Three-point boundary value test_: lower bound, upper bound, and exact
+      boundary value
     - Terms such as Lower boundary & Upper Boundary
     - Mostly based on:
         - _>vs >=_
@@ -96,7 +97,7 @@ Could be the IDE highlighting errors - looking at the code / reviewing the code 
             - for (i = 1; i <= total; i++)
         - It works well in combination with equivalence partitioning
 
-3-value boundary analysis 
+3-value boundary analysis
 
 ---
 
@@ -108,6 +109,31 @@ Could be the IDE highlighting errors - looking at the code / reviewing the code 
 ---
 
 4. **State Transition Testing**
+
+---
+
+## Doubles
+
+A stand in for DB, Library, or similar type of third-part dependency.
+
+`“A generic term for any case where you replace a production object for testing purposes”` (Martin Fowler)
+
+- Fake objects that substitute other objects in the codebase
+- They allow to•Test a unit in total isolation
+- Substitute components not yet developed
+- Speed up test execution© Pixabay at Pexels
+
+---
+
+## Mock
+
+Outgoing interactions (e.g., an email service)
+
+---
+
+## Stub
+
+Incoming interactions (e.g., an external API)
 
 ---
 
