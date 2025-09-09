@@ -50,6 +50,16 @@ Could be the IDE highlighting errors - looking at the code / reviewing the code 
 
 <br>
 
+## Unit Testing
+
+![Best practices for unit testing](assets/1-best-practices-unit-testing.png)
+![Best practices for unit testing](assets/2-best-practices-unit-testing.png)
+![Best practices for unit testing](assets/3-best-practices-unit-testing.png)
+
+---
+
+<br>
+
 ## Black Box vs White Box Testing
 
 - **Black Box** (specification-based) - Based on the test basis
@@ -87,7 +97,7 @@ Could be the IDE highlighting errors - looking at the code / reviewing the code 
     - Errors tend to cluster around boundaries
     - _Three point boundary value problem_ - _Three-point boundary value test_: lower bound, upper bound, and exact
       boundary value
-    - Terms such as Lower boundary & Upper Boundary
+    - Terms such as Lower boundary & Upper Boundary & Boundaries and their surroundings
     - Mostly based on:
         - _>vs >=_
         - _> <vs <=_
