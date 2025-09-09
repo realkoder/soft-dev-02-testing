@@ -62,6 +62,8 @@ Could be the IDE highlighting errors - looking at the code / reviewing the code 
 
 ### Anti-Patterns for Unit Testing 🛑
 
+_(Check PP - **Unit Testing Best Practices and Anit-Patterns**)_
+
 ![Anti-Patterns unit testing](assets/1-anti-patterns-unit-testing.png)
 
 
