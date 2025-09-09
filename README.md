@@ -74,13 +74,15 @@ No mocking is allowed
 
 ![Detroit approach unit testing](assets/detroit-unit-test-approach.png)
 
-
 ## London Approach
 
 Everything is mocked
 
 ![London approach unit testing](assets/london-unit-test-approach.png)
 
+### Comparing Detroit with London
+
+![Detroit vs London](assets/london-vs-detroit-unit-testing.png)
 
 ---
 
