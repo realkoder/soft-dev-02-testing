@@ -50,11 +50,20 @@ Could be the IDE highlighting errors - looking at the code / reviewing the code 
 
 <br>
 
-## Unit Testing
+## Unit Testing ⚖️
+
+### Best Practices for Unit Testing ✅
 
 ![Best practices for unit testing](assets/1-best-practices-unit-testing.png)
 ![Best practices for unit testing](assets/2-best-practices-unit-testing.png)
 ![Best practices for unit testing](assets/3-best-practices-unit-testing.png)
+
+---
+
+### Anti-Patterns for Unit Testing 🛑
+
+![Anti-Patterns unit testing](assets/1-anti-patterns-unit-testing.png)
+
 
 ---
 
