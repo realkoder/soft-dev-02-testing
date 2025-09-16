@@ -293,6 +293,72 @@ practices, and terminology, which can enhance a professional's career profile an
 
 # Tools
 
+**_Ruby oriented tools_**
+
+- **RuboCop**: Best for Ruby/Rails-specific linting and style enforcement. Lightweight and fast.
+- _**Reek**_: Focuses on detecting code smells.
+- [Brakeman](https://brakemanscanner.org/): Specialized for security vulnerabilities in Rails apps.
+- _**SimpleCov**_: While not a static analyzer, it complements these tools by measuring test coverage.
+- _**SonarQube**_: Good for multi-language projects, CI/CD integration, and higher-level metrics.
+
+---
+
+## Brakeman
+
+**_Brakeman_** is a command-line tool that analyzes the source code of _Ruby on Rails applications_ to find potential
+security vulnerabilities
+
+Add `brakeman` to `Gemfile`
+
+cd to project root and execute tool by `brakeman`
+
+```bash
+brakeman
+[Notice] Using Prism parser
+............................................
+Checks finished, collecting results...
+Generating report...
+
+== Brakeman Report ==
+
+Application Path: ~/Projects/projects-playground/munchora/munchora-backend
+Rails Version: 8.0.2
+Brakeman Version: 7.1.0
+Scan Date: 2025-09-16 11:45:24 +0200
+Duration: 0.332434 seconds
+Checks Run: BasicAuth, BasicAuthTimingAttack, CSRFTokenForgeryCVE, ContentTag, CookieSerialization, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EOLRails, EOLRuby, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONEntityEscape, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, PageCachingCVE, Pathname, PermitAttributes, QuoteTableName, Ransack, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeConfigCve, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, SprocketsPathTraversal, StripTags, SymbolDoSCVE, TemplateInjection, TranslateBug, UnsafeReflection, UnsafeReflectionMethods, ValidationRegex, VerbConfusion, WeakRSAKey, WithoutProtection, XMLDoS, YAMLParsing
+
+== Overview ==
+
+Controllers: 8
+:...skipping...
+
+== Brakeman Report ==
+
+Application Path: /Users/alexanderchristensen/Projects/projects-playground/munchora/munchora-backend
+Rails Version: 8.0.2
+Brakeman Version: 7.1.0
+Scan Date: 2025-09-16 11:45:24 +0200
+Duration: 0.332434 seconds
+Checks Run: BasicAuth, BasicAuthTimingAttack, CSRFTokenForgeryCVE, ContentTag, CookieSerialization, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EOLRails, EOLRuby, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONEntityEscape, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, PageCachingCVE, Pathname, PermitAttributes, QuoteTableName, Ransack, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeConfigCve, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, SprocketsPathTraversal, StripTags, SymbolDoSCVE, TemplateInjection, TranslateBug, UnsafeReflection, UnsafeReflectionMethods, ValidationRegex, VerbConfusion, WeakRSAKey, WithoutProtection, XMLDoS, YAMLParsing
+
+== Overview ==
+
+Controllers: 8
+Models: 8
+Templates: 2
+Errors: 0
+Security Warnings: 0
+
+== Warning Types ==
+
+No warnings found
+```
+
+---
+
+## SimpleCov Ruby Gem
+
 To measure code coverage in an _RSpec project_, you typically use the _SimpleCov gem_.
 
 **1. Add gem to `Gemfile`**
@@ -338,6 +404,13 @@ Line Coverage: 100.0% (174 / 174)
 ```ruby
 puts SimpleCov.result.format!
 ```
+
+---
+
+## SonarQube
+
+[SonarQube](https://www.sonarsource.com/) is a _static code analysis tool_ that automatically inspects code for bugs,
+vulnerabilities, code smells, and test coverage without running the program.
 
 ---
 
