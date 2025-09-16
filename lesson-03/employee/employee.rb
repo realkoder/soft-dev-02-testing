@@ -27,6 +27,7 @@ class Employee
 
   def cpr=(value)
     raise ArgumentError, "CPR must be 10 digits" unless value.to_s.match?(/^\d{10}$/)
+
     @cpr = value.to_s
   end
 
