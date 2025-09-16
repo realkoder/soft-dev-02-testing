@@ -291,6 +291,58 @@ practices, and terminology, which can enhance a professional's career profile an
 
 <br>
 
+# Tools
+
+To measure code coverage in an _RSpec project_, you typically use the _SimpleCov gem_.
+
+**1. Add gem to `Gemfile`**
+
+```ruby
+group :test do
+  gem 'simplecov', require: false
+end
+```
+
+**2. Install with `bundle install`**
+
+**3. Configure _SimpleCov_ in _spec_helper.rb_ or _rails_helper.rb_
+Place this at the very top (before any other code):**
+
+```ruby
+require 'simplecov'
+SimpleCov.start 'rails' # or just SimpleCov.start for non-Rails
+```
+
+**4. Run your specs**
+
+```bash
+bundle exec rspec
+```
+
+**5. Check the coverage report**
+After running, _SimpleCov_ generates an _HTML report_ in `coverage/index.html`
+showing line-by-line coverage and totals.
+
+**Example output**
+
+```text
+Finished in 0.00947 seconds (files took 0.33406 seconds to load)
+79 examples, 0 failures
+
+Coverage report generated for RSpec to ~/Projects/software-udvikling/soft-dev-02-testing/lesson-02/coverage.
+Line Coverage: 100.0% (174 / 174)
+```
+
+**Extra tips**
+
+```ruby
+puts SimpleCov.result.format!
+```
+
+---
+
+<br>
+
 # Assets
 
 **V-model**
