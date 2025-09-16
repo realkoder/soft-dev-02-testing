@@ -115,3 +115,13 @@ Practical errors = very high number
 | TC12      | 0      | 400       | License: No, Repeat Theory: No, Repeat Practical: No, Lessons: Yes |
 
 ---
+
+## Arturo solution
+
+6. Complete list of test case values
+
+- Theory exam points: `-1` `0` `1` `50` `83` `84` `85` `86` `90` `99` `100` `101` `120` `MAX INTEGER` `MAX INTEGER + 1`
+  `wrong data types, if applicable`
+- Practical exam errors: `-1` `0` `1` `2` `3` `4` `5` `MAX INTEGER` `MAX INTEGER + 1` `wrong data types, if applicable`
+
+---
