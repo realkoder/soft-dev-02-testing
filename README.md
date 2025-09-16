@@ -173,6 +173,19 @@ Reduced solution:
 
 4. **State Transition Testing**
 
+* Particularly suited for systems where outputs are triggered by changes to the input conditions or changes of state
+    * Usual in hardware devices (e.g., washing machine, elevator)
+* Behaviour depends on:
+    * Current state
+        * Past state
+        * Transition from past to current state
+* **_State Transition Diagram_**. Symbols:
+    * State. Only changes if stimulated by event
+    * Transition. Change from one state to another. Labelled with the name of:
+        * The event that caused the change or the precondition for it
+        * The action that arises from the change
+    * Events may generate an output or change the system’s internal state
+
 ---
 
 ### White Box Testing
@@ -300,6 +313,30 @@ practices, and terminology, which can enhance a professional's career profile an
 - [Brakeman](https://brakemanscanner.org/): Specialized for security vulnerabilities in Rails apps.
 - _**SimpleCov**_: While not a static analyzer, it complements these tools by measuring test coverage.
 - _**SonarQube**_: Good for multi-language projects, CI/CD integration, and higher-level metrics.
+
+---
+
+## Rubocop 👮
+
+Add to `Gemfile`
+
+```ruby
+group :development do
+  gem 'rubocop', require: false
+end
+```
+
+install by `bundle install`
+
+Generate a default configuration `bundle exec rubocop --auto-gen-config`
+
+Setup for _rspec_ by adding the following to `.rubocop.yml`:
+
+```yml
+require:
+  -rubocop - rspec
+  -rubocop - rails
+```
 
 ---
 
