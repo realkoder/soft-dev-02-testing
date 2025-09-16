@@ -175,6 +175,75 @@ Reduced solution:
 
 ---
 
+### White Box Testing
+
+Most important is that white-box testing is focused on the code or other structural elements.
+
+#### Statement coverage / test coverage / code coverage
+
+- It focuses on covering all executable code statements
+
+- Measure: percentage of executable lines of code tested
+
+**Statement coverage is achieved when all executable statements—including conditionals, loops, and switches—are executed
+at least once.**
+
+```javascript
+function higherNumber(numbers) {
+    lethigher = -1;
+    numbers.forEach(element => {
+        if (element > higher) {
+            higher = element;
+        }
+    });
+    returnhigher;
+}
+
+/*Test cases for 100% statement coverage-#1. Values: [1] Any array with at least one number*/
+```
+
+---
+
+#### Decision Coverage
+
+- Also called **branch coverage**
+- Every decision outcome (branch) must be tested at least once
+- This means testing _else_ conditions with no associated code
+- 100% decision coverage guarantees 100% statement coverage, but not the other way around
+
+```javascript
+function higherNumber(number1, number2, number3) {
+    lethigher = number1;
+    if (number2 > higher) {
+        higher = number2;
+        if (number3 > higher) {
+            higher = number3;
+        }
+    }
+    returnhigher;
+}
+
+/* 
+Test cases for 100% decision coverage 
+    - #1. Values: 1, 2, 3 (both ifs)        Path: a b
+    - #2. Values: 1, 3, 2 (inner else)      Path: a c
+    - #3. Values: 3, 1, 2 (outer else)      Path: d
+*/
+```
+
+---
+
+#### Statement vs Decision Coverage
+
+Statement coverage ensures every statement runs at least once,
+while decision coverage ensures every branch of conditionals (if/else) is tested.
+For else if without else, statement coverage may pass even if some branches never execute,
+but decision coverage will catch them.
+
+---
+
+<br>
+
 ## Doubles
 
 A stand in for DB, Library, or similar type of third-part dependency.
