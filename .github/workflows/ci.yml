@@ -27,3 +27,66 @@ jobs:
 
       - name: Run tests
         run: bundle exec rspec
+
+  lesson-02-tests:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: lesson-02
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Run tests
+        run: bundle exec rspec
+
+  lesson-03-tests:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: lesson-03
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Run tests
+        run: bundle exec rspec
+
+  lesson-04-tests:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: lesson-04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Run tests
+        run: bundle exec rspec
