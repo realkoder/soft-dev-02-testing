@@ -88,6 +88,27 @@ Everything is mocked
 
 <br>
 
+## Integration Test
+
+Integration testing checks whether different parts of your system work together correctly.
+Unlike unit tests, which isolate single components, integration tests exercise multiple layers
+(e.g., controllers + models + database, or service + API + queue)
+through their public interfaces, not their internals.
+The goal is to validate real-world behavior across boundaries,
+ensuring that data flows, dependencies, and interactions between components function as expected.
+
+![Integration Testing](assets/integration-testing.png)
+
+![Integration vs Unit Tests](assets/integration-vs-unit-testing.png)
+
+### Testing API's with Integration Tests
+
+![Testing endpoints with integration tests](assets/integration-testing-endpoints.png)
+
+---
+
+<br>
+
 ## Black Box vs White Box Testing
 
 - **Black Box** (specification-based) - Based on the test basis
@@ -448,6 +469,14 @@ puts SimpleCov.result.format!
 
 [SonarQube](https://www.sonarsource.com/) is a _static code analysis tool_ that automatically inspects code for bugs,
 vulnerabilities, code smells, and test coverage without running the program.
+
+---
+
+<br>
+
+# Exam
+
+Expect to be asked to show the whole test design path from black box to white box unit tests.
 
 ---
 

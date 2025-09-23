@@ -1,0 +1,555 @@
+{
+	"info": {
+		"_postman_id": "5d77b87d-fb50-40fe-8766-5face4552246",
+		"name": "customers-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29333853"
+	},
+	"item": [
+		{
+			"name": "without-params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Res must contain 'error'\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error).to.eql(\"Incorrect parameters\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/customers",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Res must return CUSTOMER ID as a number\", function () {",
+							"    pm.expect(pm.response.json()).to.have.property(\"Customer ID\");",
+							"    pm.expect(pm.response.json()[\"Customer ID\"]).to.be.a(\"number\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.environment.set('CUSTOMER_ID', jsonData['Customer ID'])",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "{{FIRST_NAME}}}",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "{{LAST_NAME}}",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Nørrebro",
+							"type": "text"
+						},
+						{
+							"key": "onboarding_date",
+							"value": "23/9-2025",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/customers",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "index",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Each user contains correct informations\", function () {",
+							"    let customers = pm.response.json();",
+							"",
+							"    customers.forEach(customer => {",
+							"        pm.expect(customer).to.have.property(\"Customer ID\");",
+							"        pm.expect(customer).to.have.property(\"First Name\");",
+							"        pm.expect(customer).to.have.property(\"Phone No\");",
+							"        pm.expect(customer).to.have.property(\"Address\");",
+							"        pm.expect(customer).to.have.property(\"Onboarding Date\");",
+							"",
+							"        if (customer[\"Phone No\"] !== null) {",
+							"            pm.expect(customer[\"Phone No\"]).to.match(/^$|^\\d{8}$/);",
+							"        }",
+							"",
+							"        // Check Onboarding Date: exactly 8 digits",
+							"        pm.expect(customer[\"Onboarding Date\"]).to.match(/^(\\d{8}|\\d{1,2}\\/\\d{1,2}-\\d{4})$/);",
+							"    })",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/customers",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Each user contains correct informations\", function () {",
+							"    let customer = pm.response.json();",
+							"",
+							"    pm.expect(customer).to.have.property(\"Customer ID\");",
+							"    pm.expect(customer).to.have.property(\"First Name\");",
+							"    pm.expect(customer).to.have.property(\"Phone No\");",
+							"    pm.expect(customer).to.have.property(\"Address\");",
+							"    pm.expect(customer).to.have.property(\"Onboarding Date\");",
+							"",
+							"    let expectedId = parseInt(pm.variables.get(\"CUSTOMER_ID\"), 10);",
+							"    pm.expect(customer['Customer ID']).to.equal(expectedId);",
+							"",
+							"    if (customer[\"Phone No\"] !== null) {",
+							"        pm.expect(customer[\"Phone No\"]).to.match(/^$|^\\d{8}$/);",
+							"    }",
+							"",
+							"    // Check Onboarding Date: exactly 8 digits",
+							"    pm.expect(customer[\"Onboarding Date\"]).to.match(/^(\\d{8}|\\d{1,2}\\/\\d{1,2}-\\d{4})$/);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/customers/{{CUSTOMER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"customers",
+						"{{CUSTOMER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "index-search",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Each user contains correct informations\", function () {",
+							"    let customers = pm.response.json();",
+							"",
+							"    customers.forEach(customer => {",
+							"        pm.expect(customer).to.have.property(\"Customer ID\");",
+							"        pm.expect(customer).to.have.property(\"First Name\");",
+							"        pm.expect(customer).to.have.property(\"Phone No\");",
+							"        pm.expect(customer).to.have.property(\"Address\");",
+							"        pm.expect(customer).to.have.property(\"Onboarding Date\");",
+							"",
+							"        let searchTerm = pm.variables.get(\"SEARCH_TERM\");",
+							"        pm.expect(customer['First Name']).to.contain(searchTerm);",
+							"",
+							"        if (customer[\"Phone No\"] !== null) {",
+							"            pm.expect(customer[\"Phone No\"]).to.match(/^$|^\\d{8}$/);",
+							"        }",
+							"",
+							"        // Check Onboarding Date: exactly 8 digits",
+							"        pm.expect(customer[\"Onboarding Date\"]).to.match(/^(\\d{8}|\\d{1,2}\\/\\d{1,2}-\\d{4})$/);",
+							"    })",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/customers?s={{SEARCH_TERM}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"customers"
+					],
+					"query": [
+						{
+							"key": "s",
+							"value": "{{SEARCH_TERM}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "without-params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Res must contain 'error'\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error).to.eql(\"Incorrect parameters\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/customers/{{CUSTOMER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"customers",
+						"{{CUSTOMER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Res must contain 'error'\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.be.a(\"string\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "{{UPDATED_FIRST_NAME}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/customers/{{CUSTOMER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"customers",
+						"{{CUSTOMER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "index-after-put",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"First_name must equal updated_firstname\", function () {",
+							"    const jsonData = pm.response.json();",
+							"    const UPDATED_FIRST_NAME = pm.environment.get('UPDATED_FIRST_NAME');",
+							"    pm.expect(jsonData['First Name']).to.eql(UPDATED_FIRST_NAME);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/customers/{{CUSTOMER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"customers",
+						"{{CUSTOMER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Contains succesfully deleted message\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.contain(\"successfully deleted\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/customers/{{CUSTOMER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"customers",
+						"{{CUSTOMER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-none-existing-id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Contains succesfully deleted message\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error).to.be.a(\"string\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/customers/{{CUSTOMER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"customers",
+						"{{CUSTOMER_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show-none-existing-id Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Contains succesfully deleted message\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error).to.be.a(\"string\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/customers/{{CUSTOMER_ID}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"customers",
+						"{{CUSTOMER_ID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					"pm.test(\"Response is JSON and contains 'data'\", function () {",
+					"    // Check that the response has JSON content-type",
+					"    pm.response.to.have.header(\"Content-Type\");",
+					"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+					"",
+					"    // Try parsing JSON safely",
+					"    let jsonData;",
+					"    try {",
+					"        jsonData = pm.response.json();",
+					"    } catch (e) {",
+					"        pm.expect.fail(\"Response is not valid JSON\");",
+					"    }",
+					"});",
+					"",
+					"pm.test(\"Response time is less than 200ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(200);",
+					"});"
+				]
+			}
+		}
+	]
+}
