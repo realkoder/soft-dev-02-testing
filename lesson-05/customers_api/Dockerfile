@@ -17,5 +17,4 @@ COPY . .
 
 EXPOSE 8001
 
-#CMD ["flask", "run"]
-CMD python -m flask --app customers init-db && flask run
+CMD ["flask", "run"]
