@@ -307,7 +307,7 @@ Incoming interactions (e.g., an external API)
 
 # End-to-End Testing
 
-
+![CSS Selectors](![img.png](assets/css-selectors.png))
 
 ---
 
