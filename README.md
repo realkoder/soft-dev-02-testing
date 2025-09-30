@@ -224,13 +224,13 @@ at least once.**
 
 ```javascript
 function higherNumber(numbers) {
-    lethigher = -1;
-    numbers.forEach(element => {
-        if (element > higher) {
-            higher = element;
-        }
-    });
-    returnhigher;
+  lethigher = -1;
+  numbers.forEach(element => {
+    if (element > higher) {
+      higher = element;
+    }
+  });
+  returnhigher;
 }
 
 /*Test cases for 100% statement coverage-#1. Values: [1] Any array with at least one number*/
@@ -247,14 +247,14 @@ function higherNumber(numbers) {
 
 ```javascript
 function higherNumber(number1, number2, number3) {
-    lethigher = number1;
-    if (number2 > higher) {
-        higher = number2;
-        if (number3 > higher) {
-            higher = number3;
-        }
+  lethigher = number1;
+  if (number2 > higher) {
+    higher = number2;
+    if (number3 > higher) {
+      higher = number3;
     }
-    returnhigher;
+  }
+  returnhigher;
 }
 
 /* 
@@ -307,7 +307,57 @@ Incoming interactions (e.g., an external API)
 
 # End-to-End Testing
 
-![CSS Selectors](![img.png](assets/css-selectors.png))
+Relies on full application requires both frontend and backend will be running if they dependent upon each other.
+Runs slower than unit tests, integration test etc.
+they have to wait for dom has loaded and html attributes are accessible.
+
+![CSS Selectors](assets/css-selectors.png)
+
+---
+
+## Selenium
+
+Invented in 2004.
+
+_Selenium Grid_ is an infrastructure for running Selenium tests in parallel across multiple machines, browsers, and
+operating systems.
+
+They may be used for regression testing - to control that everything works as supposed
+while new features or maintenance takes place.
+
+Selenium IDE plugin to create test flows by recording interaction on a given site
+stored in `.side` files for later playback.
+
+---
+
+## Cypress
+
+Frontend UI testing and automation testing
+
+- Also component testing for React, Angular, Vue and Svelte
+- Uses only Javascript
+- Universal driver:
+    - Compatible with Firefox and the Chromium family of browsers
+
+![Cypress Advantages](assets/cypress-advantages.png)
+
+![Cypress Installation](assets/cypress-installation.png)
+
+---
+
+## Playwright
+
+- Front-end UI automation testing
+    - Native mobile emulation (_Chrome_ for _Android_ and _Safari Mobile_)
+- Supports _TypeScript_, _JavaScript_, _Python_, _.Net_, and _Java_
+- For _Chromium_ (_Chrome_, _Edge_), _Firefox_ and _Webkit (Safari)_
+- Similar syntax to Jest’s
+- Out-of-process automation driver
+    - Closer to Selenium WebDriver than Cypress
+
+![Playwright Advantages](assets/playwright-advantages.png)
+
+![Playwright Installation](assets/playwright-installation.png)
 
 ---
 
