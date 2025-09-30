@@ -305,6 +305,14 @@ Incoming interactions (e.g., an external API)
 
 <br>
 
+# End-to-End Testing
+
+
+
+---
+
+<br>
+
 # Certifications
 
 `International Software Testing Qualifications Board`
