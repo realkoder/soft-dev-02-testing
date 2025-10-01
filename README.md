@@ -385,6 +385,15 @@ practices, and terminology, which can enhance a professional's career profile an
 
 # Tools
 
+## GHERKIN
+
+Gherkin developed by Cucumber - dictates `Given` `When` `Then` -
+if used correct it works well together with BDD (Behaviour Driven Development) instead of pure TDD.
+
+---
+
+<br>
+
 **_Ruby oriented tools_**
 
 - **RuboCop**: Best for Ruby/Rails-specific linting and style enforcement. Lightweight and fast.
