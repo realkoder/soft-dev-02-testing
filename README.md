@@ -15,6 +15,10 @@
 
 # Verification vs Validation
 
+V-model is split between upper part _Acceptance testing_ = _validation_.
+
+V-model lower part _System testing_ and below = _verification_.
+
 **Verification** - Checks that the work product meets the requirements
 
 - Mostly a technical activity
@@ -44,7 +48,89 @@ For _unit tests_ all values have to be hardcoded.
 ## Static Testing
 
 Testing the code without it being executed.
-Could be the IDE highlighting errors - looking at the code / reviewing the code / AI analyzing code.
+Could be the _IDE_ highlighting errors - looking at the code / reviewing the code / AI analyzing code.
+
+---
+
+<br>
+
+## Agile and Testing
+
+![Agile and Testing](assets/agile-and-testing.png)
+
+## Acceptance Testing
+
+It should demonstrate system conformance to the customers requirements,
+operational processes and maintenance processes.
+
+Independent of other types of testing.
+
+- **_They are mostly executed by end users_**
+    - Operations users
+    - Beta customers
+    - Company executives
+
+- **_Common in contractual situations_**
+    - Successful test completion leads the customer to accept the system
+    - Unsuccessful test completion can entitle the customer to reject the product
+
+**Successful acceptance tests can give the green light to product deployment**
+
+---
+
+### Writing Acceptance Tests
+
+- **_Acceptance tests_**
+    - Clarify requirements
+        - Common ground between customers and developers
+        - In Agile, based on user stories, they can provide a measure of “doneness”
+    - Must be comprehensive
+        - The whole system is tested
+        - In Agile and iterative SDLCs, it involves testing all functionalities for each iteration
+    - Do not change even if product implementation does
+
+#### Types of Acceptance Tests
+
+- **User Acceptance Testing**(UAT)
+- **Operational Acceptance Testing**
+    - Validation of the products’ operations in a real situation
+- **Contract and Regulations Testing**
+    - Legal bonds, safety standards (banking, pharmaceutical), governmental regulations (defense)
+- **Alpha Testing**. In-house
+    - Real production
+- **Beta Testing**. At the customer’s premises•Pilot phase. Product release on a limited geographical or logical scale
+    - Product is offered free to some clients for testing and validation.
+
+---
+
+#### UAT - User Acceptance Tests / Test Case Documentation
+
+![UAT Test Case Documentation](assets/uat-test-case-documentation.png)
+
+Check Arturo's [Acceptance Test checklist](https://github.com/arturomorarioja-ek/SD_Testing_E25/blob/main/Lesson07/Acceptance%20Test%20checklist.xlsx)
+
+Check Arturo's [Test Case template](https://github.com/arturomorarioja-ek/SD_Testing_E25/blob/main/Lesson07/Test%20Case%20template.xlsx)
+
+---
+
+<br>
+
+## Integration Test
+
+Integration testing checks whether different parts of your system work together correctly.
+Unlike unit tests, which isolate single components, integration tests exercise multiple layers
+(e.g., controllers + models + database, or service + API + queue)
+through their public interfaces, not their internals.
+The goal is to validate real-world behavior across boundaries,
+ensuring that data flows, dependencies, and interactions between components function as expected.
+
+![Integration Testing](assets/integration-testing.png)
+
+![Integration vs Unit Tests](assets/integration-vs-unit-testing.png)
+
+### Testing API's with Integration Tests
+
+![Testing endpoints with integration tests](assets/integration-testing-endpoints.png)
 
 ---
 
@@ -83,27 +169,6 @@ Everything is mocked
 ### Comparing Detroit with London
 
 ![Detroit vs London](assets/london-vs-detroit-unit-testing.png)
-
----
-
-<br>
-
-## Integration Test
-
-Integration testing checks whether different parts of your system work together correctly.
-Unlike unit tests, which isolate single components, integration tests exercise multiple layers
-(e.g., controllers + models + database, or service + API + queue)
-through their public interfaces, not their internals.
-The goal is to validate real-world behavior across boundaries,
-ensuring that data flows, dependencies, and interactions between components function as expected.
-
-![Integration Testing](assets/integration-testing.png)
-
-![Integration vs Unit Tests](assets/integration-vs-unit-testing.png)
-
-### Testing API's with Integration Tests
-
-![Testing endpoints with integration tests](assets/integration-testing-endpoints.png)
 
 ---
 
@@ -327,6 +392,12 @@ while new features or maintenance takes place.
 
 Selenium IDE plugin to create test flows by recording interaction on a given site
 stored in `.side` files for later playback.
+
+_Selenium_ runs outside the browser, communicating with it via automation APIs like the WebDriver protocol rather than
+executing within the browser’s runtime. It sends commands to a browser driver (e.g., _ChromeDriver_, _GeckoDriver_),
+which performs
+actions on the browser itself. This external control allows realistic user simulation but is generally slower and less
+tightly integrated than tools like _Playwright_ or _Cypress_, which run directly inside the browser context.
 
 ---
 
