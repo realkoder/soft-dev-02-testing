@@ -50,6 +50,8 @@ For _unit tests_ all values have to be hardcoded.
 Testing the code without it being executed.
 Could be the _IDE_ highlighting errors - looking at the code / reviewing the code / AI analyzing code.
 
+[Wikipedia site for static test tools](https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis)
+
 ---
 
 <br>
